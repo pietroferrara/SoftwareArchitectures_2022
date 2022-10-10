@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\Gradle-1.0-SNAPSHOT.jar
+set CLASSPATH=%APP_HOME%\lib\Gradle-1.0-SNAPSHOT.jar;%APP_HOME%\lib\log4j-core-2.19.0.jar;%APP_HOME%\lib\log4j-api-2.19.0.jar
 
 
 @rem Execute Gradle
