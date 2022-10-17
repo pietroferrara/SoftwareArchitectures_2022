@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @RequestMapping("/")
     public String root() {
-        return "Greetings from Spring Boot!";
+        return "Greetings from Spring Boot!<br>" +
+                "<a href='input'>Hello world</a><br>" +
+                "<a href='adderinput'>Adder</a>";
     }
 
     @RequestMapping("/helloworld")
