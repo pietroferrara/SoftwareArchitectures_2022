@@ -1,34 +1,23 @@
 package com.example.spring;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class HelloController {
-    @RequestMapping("/")
-    public String root() {
-        return "Greetings from Spring Boot!<br>" +
-                "<a href='input'>Hello world</a><br>" +
-                "<a href='adderinput'>Adder</a>";
-    }
 
     @RequestMapping("/helloworld")
     public String helloworld(
-            @RequestParam(name = "name", required = false,defaultValue = "World")
-            String name) {
-        return "Hi "+name;
+            @RequestParam(name = "name", required = false, defaultValue = "World")
+            String name,
+            Model model) {
+        model.addAttribute("name", name);
+        return "helloworld";
     }
 
-    @RequestMapping("/input")
-    public String input() {
-        return "<html><body>" +
-                "<form action=\"helloworld\" method=\"GET\" >\n" +
-                "  <p> Name <input type=\"text\" name=\"name\"></p>\n" +
-                "  <p><input type=\"submit\" value=\"Submit\"></p>\n" +
-                "</form>\n" +
-                "</body></html>";
-    }
 
 }
 
