@@ -1,0 +1,9 @@
+<hibernate-mapping>
+    <class name="org.example.Event" table="Events">
+        <id name="id" column="id">
+            <generator class="increment"/>
+        </id>
+        <property name="date" type="timestamp" column="date"/>
+        <property name="title" column="title"/>
+    </class>
+</hibernate-mapping>
