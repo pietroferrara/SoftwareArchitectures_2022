@@ -1,12 +1,15 @@
-package com.example.spring;
+package com.example.spring.adder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 @Controller
 public class Adder {
@@ -19,7 +22,8 @@ public class Adder {
                 String left,
                 @RequestParam(name = "right", required = true)
                 String right,
-                Model model) {
+                Model model,
+                HttpServletRequest request) {
             logger.info("Received a valid request with parameters "+left+" and "+right);
             model.addAttribute("left", left);
             model.addAttribute("right", right);
@@ -35,10 +39,20 @@ public class Adder {
                 result = "Overflow";
             }
             model.addAttribute("result", result);
+
+            recordDB(request.getRemoteAddr(), left, right, result);
+
             return "adder";
         }
 
-        /**
+    @Autowired
+    private AdditionRepository repo;
+    private void recordDB(String remoteAddr, String left, String right, String result) {
+            LoggedSum sum = new LoggedSum(remoteAddr, new Date(), left, right, result);
+            repo.save(sum);
+    }
+
+    /**
          *
          * @param a
          * @param b
