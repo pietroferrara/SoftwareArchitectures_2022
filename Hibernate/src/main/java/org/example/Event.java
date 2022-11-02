@@ -1,7 +1,12 @@
 package org.example;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.Date;
 
+@Entity
+@Table(name = "Events")
 public class Event {
     private Long id;
     private String title;
@@ -18,6 +23,9 @@ public class Event {
         this.id = id;
     }
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -26,10 +34,14 @@ public class Event {
         return title;
     }
 
+
+    @Column(name = "title")
     public void setTitle(String title) {
         this.title = title;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date")
     public Date getDate() {
         return date;
     }
