@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Logged sums</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th> Id </th>
+    <th> Ip address </th>
+    <th> Time </th>
+    <th> Left </th>
+    <th> Right </th>
+    <th> Result </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${loggedSums.empty}">
+    <td colspan="6">No logged sums</td>
+  </tr>
+  <tr th:each="loggedSum : ${loggedSums}">
+    <td><span th:text="${loggedSum.id}">Id</span></td>
+    <td><span th:text="${loggedSum.ip}">Ip</span></td>
+    <td><span th:text="${loggedSum.time}">Time</span></td>
+    <td><span th:text="${loggedSum.leftValue}">Left</span></td>
+    <td><span th:text="${loggedSum.rightValue}">Right</span></td>
+    <td><span th:text="${loggedSum.result}">Result</span></td>
+  </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>

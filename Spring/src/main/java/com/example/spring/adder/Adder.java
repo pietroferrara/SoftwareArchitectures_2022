@@ -62,4 +62,13 @@ public class Adder {
             logger.trace("Adding "+a+" and "+b);
             return Math.addExact(a, b);
         }
+
+
+
+    @RequestMapping("showLoggedSums")
+    public String showLoggedSums(Model model) {
+        logger.info("Showing logged sums");
+        model.addAttribute("loggedSums", repo.findAll());
+        return "showLoggedSums";
+    }
 }
