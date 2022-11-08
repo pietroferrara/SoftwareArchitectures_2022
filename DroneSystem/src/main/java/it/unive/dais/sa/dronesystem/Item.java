@@ -1,4 +1,4 @@
-package com.example.dronesystem;
+package it.unive.dais.sa.dronesystem;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class Item {
 
     private double weight;
-    private int id;
+    private Integer id;
     private String description;
 
     public Item() {}
@@ -28,11 +28,11 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

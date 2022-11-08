@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a delivery</title>
+</head>
+<body>
+<form action="createDelivery">
+    <p>
+    <label for="drone">Drone:</label>
+        <select id="drone" name="drone" th:each="drone : ${drones}">
+            <option th:value="${drone.Id}"><span th:text="'Drone with id ' + ${drone.Id}"/></option>
+        </select>
+    </p>
+
+    <p>
+    <label for="item">Item:</label>
+    <select id="item" name="item" th:each="item : ${items}">
+        <option th:value="${item.Id}"><span th:text="'Item with id ' + ${item.Id}"/></option>
+    </select>
+    <p><input type="submit" value="Submit"></p>
+    </p>
+</form>
+</body>
+</html>

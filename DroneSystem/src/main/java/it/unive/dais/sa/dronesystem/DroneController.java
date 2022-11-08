@@ -1,4 +1,4 @@
-package com.example.dronesystem;
+package it.unive.dais.sa.dronesystem;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,16 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
-
 @Controller
 public class DroneController {
     private static final Logger logger = LogManager.getLogger("Main");
 
+    @Autowired
+    public DroneRepository drones;
 
     @RequestMapping("createDrone")
-    public String adder(
+    public String createDrone(
             @RequestParam(name = "x", required = true)
             String x,
             @RequestParam(name = "y", required = true)
@@ -38,11 +37,9 @@ public class DroneController {
         return "createDrone";
     }
 
-    @Autowired
-    private DroneRepository drone_repo;
     private void recordDB(String x, String y, String weightLimit, String battery) {
-        Drone drone = new Drone(Integer.valueOf(x), Integer.valueOf(y), Double.valueOf(weightLimit), Double.valueOf(battery));
-        drone_repo.save(drone);
+        Drone drone = new Drone(new Position(Integer.valueOf(x), Integer.valueOf(y)), Double.valueOf(weightLimit), Double.valueOf(battery));
+        drones.save(drone);
     }
 
 }

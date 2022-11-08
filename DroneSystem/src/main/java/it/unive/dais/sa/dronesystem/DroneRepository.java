@@ -1,4 +1,4 @@
-package com.example.dronesystem;
+package it.unive.dais.sa.dronesystem;
 
 import org.springframework.data.repository.CrudRepository;
 

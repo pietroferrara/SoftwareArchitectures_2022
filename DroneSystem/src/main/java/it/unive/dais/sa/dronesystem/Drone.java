@@ -1,41 +1,30 @@
-package com.example.dronesystem;
+package it.unive.dais.sa.dronesystem;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Drone {
-    int x, y;
-    Integer id;
-    double weightLimit;
-    double battery;
+    private Position p;
+    private Integer id;
+    private double weightLimit;
+    private double battery;
 
     public Drone() {}
 
-    public Drone(int x, int y, double weightLimit, double battery) {
-        this.x = x;
-        this.y = y;
+    public Drone(Position p, double weightLimit, double battery) {
+        this.p = p;
         this.weightLimit = weightLimit;
         this.battery = battery;
     }
 
-    public int getX() {
-        return x;
+    public Position getPosition() {
+        return p;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setPosition(Position p) {
+        this.p = p;
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public void setId(Integer id) {
         this.id = id;

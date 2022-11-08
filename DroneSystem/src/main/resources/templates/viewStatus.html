@@ -1,0 +1,74 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Status of the system</title>
+</head>
+<body>
+<h1>Drones</h1>
+<table>
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Position </th>
+        <th> Weight limit </th>
+        <th> Battery </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${drones.empty}">
+        <td colspan="4">No drone</td>
+    </tr>
+    <tr th:each="drone : ${drones}">
+        <td><span th:text="${drone.Id}">Id</span></td>
+        <td><span th:text="'x='+${drone.Position.X}+',y='+${drone.Position.Y}">Position</span></td>
+        <td><span th:text="${drone.WeightLimit}">Weight limit</span></td>
+        <td><span th:text="${drone.Battery}">Battery</span></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<h1>Items</h1>
+<table>
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Weight </th>
+        <th> Description </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${items.empty}">
+        <td colspan="3">No item</td>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td><span th:text="${item.Id}">Id</span></td>
+        <td><span th:text="${item.Weight}">Weight</span></td>
+        <td><span th:text="${item.Description}">Description</span></td>
+    </tr>
+    </tbody>
+</table>
+
+<h1>Deliveries</h1>
+<table>
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Drone id </th>
+        <th> Item id </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${deliveries.empty}">
+        <td colspan="3">No delivery</td>
+    </tr>
+    <tr th:each="deliverie : ${deliveries}">
+        <td><span th:text="${deliverie.Id}">Id</span></td>
+        <td><span th:text="${deliverie.Drone.Id}">Drone id</span></td>
+        <td><span th:text="${deliverie.Item.Id}">Item id</span></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
