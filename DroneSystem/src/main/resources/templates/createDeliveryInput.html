@@ -7,16 +7,22 @@
 <form action="createDelivery">
     <p>
     <label for="drone">Drone:</label>
-        <select id="drone" name="drone" th:each="drone : ${drones}">
+    <select id="drone" name="drone">
+        <span  th:each="drone : ${drones}">
             <option th:value="${drone.Id}"><span th:text="'Drone with id ' + ${drone.Id}"/></option>
-        </select>
+        </span>
+    </select>
     </p>
 
     <p>
     <label for="item">Item:</label>
-    <select id="item" name="item" th:each="item : ${items}">
-        <option th:value="${item.Id}"><span th:text="'Item with id ' + ${item.Id}"/></option>
+    <select id="item" name="item">
+        <span th:each="item : ${items}">
+            <option th:value="${item.Id}"><span th:text="'Item with id ' + ${item.Id}"/></option>
+        </span>
     </select>
+    <p> X coordinate <input type="text" name="x"></p>
+    <p> Y coordinate <input type="text" name="y"></p>
     <p><input type="submit" value="Submit"></p>
     </p>
 </form>

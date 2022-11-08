@@ -22,6 +22,8 @@ public class DeliveryController {
     public DroneRepository drones;
     @Autowired
     public DeliveryRepository deliveries;
+    @Autowired
+    public CompletedDeliveryRepository completedDeliveries;
     @RequestMapping("createDeliveryInput")
     public String createDeliveryInput(
             Model model) {
@@ -65,17 +67,34 @@ public class DeliveryController {
             String drone,
             @RequestParam(name = "item", required = true)
             String item,
+            @RequestParam(name = "x", required = true)
+            String x,
+            @RequestParam(name = "y", required = true)
+            String y,
             Model model) {
         logger.info("Creating a delivery");
         model.addAttribute("drone", drone);
         model.addAttribute("item", item);
-        recordDB(drone, item);
+        model.addAttribute("x", x);
+        model.addAttribute("y", y);
+        recordDB(drone, item, x, y);
         return "createDelivery";
     }
 
-    private void recordDB(String drone, String item) {
-        Delivery delivery = new Delivery(drones.findById(Integer.valueOf(drone)).get(), items.findById(Integer.valueOf(item)).get());
+    private void recordDB(String drone, String item, String x, String y) {
+        Delivery delivery = new Delivery(drones.findById(Integer.valueOf(drone)).get(), items.findById(Integer.valueOf(item)).get(), new Position(Integer.parseInt(x), Integer.parseInt(y)));
         deliveries.save(delivery);
+    }
+
+    @RequestMapping("startDelivery")
+    public String startDelivery(
+            @RequestParam(name = "id", required = true)
+            String id,
+            Model model) throws Exception {
+        logger.info("Starting a delivery");
+        model.addAttribute("id", id);
+        new DeliveryManager(deliveries, completedDeliveries, drones, deliveries.findById(Integer.valueOf(id)).get()).start();
+        return "startDelivery";
     }
 
 }

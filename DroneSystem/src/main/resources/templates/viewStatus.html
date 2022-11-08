@@ -57,18 +57,52 @@
         <th> Id </th>
         <th> Drone id </th>
         <th> Item id </th>
+        <th> Destination </th>
+        <th> </th>
     </tr>
     </thead>
     <tbody>
     <tr th:if="${deliveries.empty}">
-        <td colspan="3">No delivery</td>
+        <td colspan="5">No delivery</td>
     </tr>
     <tr th:each="deliverie : ${deliveries}">
         <td><span th:text="${deliverie.Id}">Id</span></td>
         <td><span th:text="${deliverie.Drone.Id}">Drone id</span></td>
         <td><span th:text="${deliverie.Item.Id}">Item id</span></td>
+        <td><span th:text="'x='+${deliverie.Destination.X}+',y='+${deliverie.Destination.Y}">Destination</span></td>
+        <td><form action="startDelivery">
+            <input type="hidden" id="id" name="id" th:value="${deliverie.Id}">
+            <p><input type="submit" value="Start delivery"></p>
+        </form></td>
     </tr>
     </tbody>
 </table>
+
+
+<h1>Completed deliveries</h1>
+<table>
+    <thead>
+    <tr>
+        <th> Id </th>
+        <th> Drone id </th>
+        <th> Item id </th>
+        <th> Destination </th>
+        <th> Time </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${completeddeliveries.empty}">
+        <td colspan="5">No completed delivery</td>
+    </tr>
+    <tr th:each="completeddeliverie : ${completeddeliveries}">
+        <td><span th:text="${completeddeliverie.Id}">Id</span></td>
+        <td><span th:text="${completeddeliverie.Drone.Id}">Drone id</span></td>
+        <td><span th:text="${completeddeliverie.Item.Id}">Item id</span></td>
+        <td><span th:text="'x='+${completeddeliverie.Destination.X}+',y='+${completeddeliverie.Destination.Y}">Destination</span></td>
+        <td><span th:text="${completeddeliverie.Time}">Time</span></td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

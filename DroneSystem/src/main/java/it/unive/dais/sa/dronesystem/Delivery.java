@@ -6,12 +6,23 @@ import javax.persistence.*;
 public class Delivery {
     private Item item;
     private Drone drone;
+    private Position destination;
     private int id;
 
     public Delivery() {}
-    public Delivery(Drone drone, Item item) {
+    public Delivery(Drone drone, Item item, Position destination) {
         this.item = item;
         this.drone = drone;
+        this.destination = destination;
+    }
+
+    @Embedded
+    public Position getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Position destination) {
+        this.destination = destination;
     }
 
     @OneToOne
