@@ -17,6 +17,7 @@ public class Drone {
         this.battery = battery;
     }
 
+    @Embedded
     public Position getPosition() {
         return p;
     }
