@@ -50,7 +50,7 @@ public class DeliveryManager {
             Position destination = delivery.getDestination();
             Position actualPosition = delivery.getDrone().getPosition();
             Drone drone = delivery.getDrone();
-            Position new_position =MoverPluginRegistry.registry.getPluginFor(drone).get()
+            Position new_position = MoverPluginRegistry.registry.getPluginFor(drone).get()
                     .approach(actualPosition, destination, delivery.getDrone());
             drone.setPosition(new_position);
             drones.save(drone);
