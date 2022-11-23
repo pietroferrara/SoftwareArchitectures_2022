@@ -19,6 +19,7 @@ import java.util.stream.StreamSupport;
 
 @RestController
 public class DBController {
+/*
     private static final Logger logger = LogManager.getLogger("Main");
 
     @Autowired
@@ -96,4 +97,6 @@ public class DBController {
             super("Drone "+id+" not found");
         }
     }
+
+ */
 }
