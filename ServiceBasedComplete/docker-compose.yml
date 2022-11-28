@@ -1,0 +1,21 @@
+services:
+  service1:
+    image: unive/service2
+    ports:
+      - "8082:8082"
+  service2:
+    image: unive/service3
+    ports:
+      - "8083:8083"
+  service3:
+    image: unive/service4
+    ports:
+      - "8084:8084"
+  service4:
+    image: unive/service5
+    ports:
+      - "8085:8085"
+  service5:
+    image: unive/service6
+    ports:
+      - "8086:8086"
