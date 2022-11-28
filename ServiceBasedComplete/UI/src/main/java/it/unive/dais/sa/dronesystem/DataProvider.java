@@ -15,11 +15,10 @@ public class DataProvider {
         return restTemplate.getForObject(restServiceURL, Item[].class);
     }
     public static Delivery[] findAllDeliveries() {
-        return new Delivery[0];
-/*        RestTemplate restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         String restServiceURL = "http://host.docker.internal:8084/deliveries";
         return restTemplate.getForObject(restServiceURL, Delivery[].class);
-*/    }
+    }
     public static CompletedDelivery[] findAllCompletedDeliveries() {
         RestTemplate restTemplate = new RestTemplate();
         String restServiceURL = "http://host.docker.internal:8084/completeddeliveries";
