@@ -30,14 +30,14 @@ public class ViewStatusController {
 
     private Collection<Drone> getAllDrones() {
         RestTemplate restTemplate = new RestTemplate();
-        String restServiceURL = "http://localhost:8082/drones/";
+        String restServiceURL = "http://host.docker.internal:8082/drones/";
         Drone[] drone = restTemplate.getForObject(
                 restServiceURL, Drone[].class);
         return Arrays.asList(drone);
     }
     private Collection<Item> getAllItems() {
         RestTemplate restTemplate = new RestTemplate();
-        String restServiceURL = "http://localhost:8083/items/";
+        String restServiceURL = "http://host.docker.internal:8083/items/";
         Item[] items = restTemplate.getForObject(
                 restServiceURL, Item[].class);
         return Arrays.asList(items);

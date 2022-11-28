@@ -1,0 +1,13 @@
+services:
+  drones:
+    image: unive/service10
+    ports:
+      - "8082:8082"
+  items:
+    image: unive/service11
+    ports:
+      - "8083:8083"
+  UI:
+    image: unive/service12
+    ports:
+      - "8084:8084"
