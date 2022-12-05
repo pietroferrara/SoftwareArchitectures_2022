@@ -17,6 +17,6 @@ public class Sender implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Sending a message");
-        template.convertAndSend("logs", "foo.bar.baz", "Hello");
+        template.convertAndSend(SpringRabbitMqApplication.topicExchangeName, "foo.bar.baz", "Hello");
     }
 }
